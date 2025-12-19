@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "feed cat",
+        "description": "",
+        "completed": true
+    },
+    {
+        "id": 2,
+        "title": "wash car",
+        "description": "washing car",
+        "completed": false
+    },
+    {
+        "id": 3,
+        "title": "do assignments",
+        "description": "",
+        "completed": false
+    }
+]
