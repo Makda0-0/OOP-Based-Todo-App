@@ -1,59 +1,63 @@
-# OOP-Based-Todo-App
+# 📝 OOP-Based Todo App (CLI, JSON Storage)
+
+A simple **Command Line Interface (CLI) Todo application** built using **Python and Object-Oriented Programming (OOP)**.  
+All tasks are stored locally in a **JSON file**, ensuring data persistence even after the program is closed and restarted.
+
+---
+
+## 📌 Project Overview
+
+This project demonstrates how to:
+- Design a Python application using **OOP principles**
+- Persist data using **JSON serialization and deserialization**
+- Build a functional **CRUD-based CLI application**
+
+The app allows users to add, view, update, and delete todo tasks while automatically saving changes to a local file.
+
+---
+
+## ⚙️ Technical Requirements Fulfilled
+
+### 1️⃣ Object-Oriented Design
+The application is structured using classes:
+- `Task` – Represents an individual todo item
+- `TodoApp` – Manages all tasks and application logic
+
+### 2️⃣ Data Persistence (JSON Serialization)
+- Tasks are saved to a local file called `todos.json`
+- Data is automatically reloaded when the program starts
+- No database is used
+
+---
+
+## ✅ Functional Requirements
+
+✔ Add a new todo  
+✔ View all todos with ID, title, description, and status  
+✔ Update todo title or description  
+✔ Mark tasks as completed or incomplete  
+✔ Delete todos by ID  
+✔ Persistent storage using `todos.json`  
+
+---
+## 📄 JSON Serialization & Object Conversion
+
+This application uses JSON serialization and deserialization to persist todo data without a database.
+
+### 🔁 Converting Objects to JSON (Serialization)
+
+Each todo task is represented by a `Task` object.  
+Before saving to the `todos.json` file, every `Task` object is converted into a dictionary using the `to_dict()` method:
+
+```python
+def to_dict(self):
+    return {
+        'id': self.id,
+        'title': self.title,
+        'description': self.description,
+        'completed': self.completed
+    }
 
 
-A command-line Todo application built with Object-Oriented Programming principles and local JSON persistence.
+## 📂 Project Structure
 
-## 📁 Project Files
-
-### `todo_app.py`
-Main application file containing all the core logic and classes.
-
-### **Classes Overview**
-
-#### **Task Class**
-Represents individual todo items with the following structure:
-
-**Attributes:**
-- `id` (int): Unique identifier for each task
-- `title` (str): Main task description
-- `description` (str): Optional detailed description
-- `completed` (bool): Completion status (default: False)
-
-**Methods:**
-- `__init__(self, id, title, description="", completed=False)` - Constructor
-- `to_dict(self)` - Converts Task object to serializable dictionary
-- `from_dict(cls, data)` - Class method to create Task from dictionary
-
-#### **TodoApp Class**
-Manages the collection of tasks and handles file operations.
-
-**Attributes:**
-- `tasks` (list): Collection of Task objects
-- `next_id` (int): Auto-incrementing ID counter
-- `filename` (str): JSON storage file name ('todos.json')
-
-**Key Methods:**
-
-**File Operations:**
-- `load_tasks()` - Reads JSON file and creates Task objects on startup
-- `save_tasks()` - Serializes all tasks to JSON file
-
-**CRUD Operations:**
-- `add_task(title, description="")` - Creates and saves new task
-- `view_tasks()` - Displays all tasks with details
-- `update_task(id, new_title=None, new_desc=None, toggle=False)` - Modifies existing task
-- `delete_task(id)` - Removes task by ID
-
-### **Main Function (`main()`)**
-Program entry point that provides the user interface:
-
-**Menu System:**
-1. **Add Task** - Prompts for title and optional description
-2. **View Tasks** - Lists all tasks with formatting
-3. **Update Task** - Sub-menu for modifying task attributes
-4. **Delete Task** - Removes task by entering ID
-5. **Quit** - Exits application
-
-## 🔄 Data Flow
-
-### **Serialization (Save)**
